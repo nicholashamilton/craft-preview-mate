@@ -17,46 +17,46 @@
 (function ($) {
     if (!Craft) return;
 
-    Craft.PM = {
+    Craft.PreviewMate = {
         settings: {},
         lpEditorContainer: null,
         lpDevicePreviewContainer: null,
         dpcIframeElement: null,
 
         firstCheck: function() {
-            Craft.PM.init();
+            Craft.PreviewMate.init();
         },
 
         previewModuleChecker: setInterval(function () {
-            Craft.PM.init();
+            Craft.PreviewMate.init();
         }, 1500),
 
         clearPreviewModuleChecker() {
-            clearInterval(Craft.PM.previewModuleChecker);
+            clearInterval(Craft.PreviewMate.previewModuleChecker);
         },
 
         init() {
-            if (!Craft.PM.hasPreviewButton()) {
-                Craft.PM.clearPreviewModuleChecker();
+            if (!Craft.PreviewMate.hasPreviewButton()) {
+                Craft.PreviewMate.clearPreviewModuleChecker();
                 return;
             }
 
-            Craft.PM.lpEditorContainer = document.querySelector('.lp-editor-container');
-            Craft.PM.lpDevicePreviewContainer = document.querySelector(".lp-device-preview-container");
+            Craft.PreviewMate.lpEditorContainer = document.querySelector('.lp-editor-container');
+            Craft.PreviewMate.lpDevicePreviewContainer = document.querySelector(".lp-device-preview-container");
 
-            if (!Craft.PM.lpEditorContainer || !Craft.PM.lpDevicePreviewContainer) return;
+            if (!Craft.PreviewMate.lpEditorContainer || !Craft.PreviewMate.lpDevicePreviewContainer) return;
 
-            Craft.PM.clearPreviewModuleChecker();
+            Craft.PreviewMate.clearPreviewModuleChecker();
 
-            Craft.PM.initPreviewModule();
+            Craft.PreviewMate.initPreviewModule();
         },
 
         async initPreviewModule() {
-            Craft.PM.settings = await Craft.PM.getSettings();
+            Craft.PreviewMate.settings = await Craft.PreviewMate.getSettings();
 
-            Craft.PM.initDevicePreviewIframe();
+            Craft.PreviewMate.initDevicePreviewIframe();
 
-            Craft.PM.observeDevicePreviewContainer();
+            Craft.PreviewMate.observeDevicePreviewContainer();
         },
 
         observeDevicePreviewContainer() {
@@ -71,46 +71,40 @@
 
                 if (!isNewNodeLivePreviewIframe) return;
 
-                Craft.PM.dpcIframeElement = recentlyAddedNode;
+                Craft.PreviewMate.dpcIframeElement = recentlyAddedNode;
 
-                Craft.PM.dpcIframeElement.onload = Craft.PM.handlePreviewIframeLoad;
+                Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handlePreviewIframeLoad;
             }
 
             const dpcObserver = new MutationObserver(callback);
-            dpcObserver.observe(Craft.PM.lpDevicePreviewContainer, observerConfig);
+            dpcObserver.observe(Craft.PreviewMate.lpDevicePreviewContainer, observerConfig);
         },
 
         initDevicePreviewIframe() {
-            Craft.PM.dpcIframeElement = Craft.PM.lpDevicePreviewContainer.querySelector("iframe");
+            Craft.PreviewMate.dpcIframeElement = Craft.PreviewMate.lpDevicePreviewContainer.querySelector("iframe");
 
-            if (!Craft.PM.dpcIframeElement) return;
+            if (!Craft.PreviewMate.dpcIframeElement) return;
 
-            Craft.PM.attatchPreviewBlockEventListeners(Craft.PM.dpcIframeElement);
-            Craft.PM.dpcIframeElement.onload = Craft.PM.handlePreviewIframeLoad;
+            Craft.PreviewMate.attatchPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
+            Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handlePreviewIframeLoad;
         },
 
         handlePreviewIframeLoad(e) {
-            Craft.PM.dpcIframeElement = e.currentTarget;
+            Craft.PreviewMate.dpcIframeElement = e.currentTarget;
 
-            Craft.PM.attatchPreviewBlockEventListeners(Craft.PM.dpcIframeElement);
+            Craft.PreviewMate.attatchPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
         },
 
         attatchPreviewBlockEventListeners(iframe) {
-            Craft.PM.settings.matrixFields.forEach((field) => {
+            Craft.PreviewMate.settings.matrixFields.forEach((field) => {
                 if (typeof field.handle !== "string") return;
-                const matrix_handle = field.handle;
+                const matrixHandle = field.handle;
+                const editorBlocksQuery = Craft.PreviewMate.getEditorBlocksQuerySelectorString(matrixHandle, field.excludeBlocks);
+                const previewBlocksQuery = Craft.PreviewMate.getPreviewBlocksQueryString(matrixHandle);
 
-                let editorMatrixQuery = ".matrix.matrix-field#fields-" + matrix_handle + " .blocks div.matrixblock:not(.disabled):not(.superTableMatrix)";
-                if (Array.isArray(field.excludeBlocks) && field.excludeBlocks.length) {
-                    field.excludeBlocks.forEach(blockHandle => {
-                        if (typeof blockHandle === "string") {
-                            editorMatrixQuery += ":not([data-type='" + blockHandle + "'])";
-                        }
-                    });
-                }
+                const editorBlocks = Craft.PreviewMate.lpEditorContainer.querySelectorAll(editorBlocksQuery);
+                const previewBlocks = iframe.contentWindow.document.body.querySelectorAll(previewBlocksQuery);
 
-                const editorBlocks = Craft.PM.lpEditorContainer.querySelectorAll(editorMatrixQuery);
-                const previewBlocks = iframe.contentWindow.document.body.querySelectorAll("[preview-block='" + matrix_handle + "']");
                 if (editorBlocks.length !== previewBlocks.length) return;
 
                 previewBlocks.forEach(function(preview_block, i) {
@@ -134,6 +128,22 @@
                     });
                 });
             });
+        },
+
+        getEditorBlocksQuerySelectorString(matrixHandle, excludeBlocks) {
+            let editorMatrixQuery = ".matrix.matrix-field#fields-" + matrixHandle + " .blocks div.matrixblock:not(.disabled):not(.superTableMatrix)";
+            if (Array.isArray(excludeBlocks) && excludeBlocks.length) {
+                excludeBlocks.forEach(blockHandle => {
+                    if (typeof blockHandle === "string") {
+                        editorMatrixQuery += ":not([data-type='" + blockHandle + "'])";
+                    }
+                });
+            }
+            return editorMatrixQuery;
+        },
+
+        getPreviewBlocksQueryString(matrixHandle) {
+            return "[preview-block='" + matrixHandle + "']";
         },
 
         hasPreviewButton() {

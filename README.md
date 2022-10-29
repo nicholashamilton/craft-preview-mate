@@ -1,4 +1,4 @@
-# PreviewMate - Live Preview Plugin
+# PreviewMate
 
 ##### Click Preview Block -> Scroll to Editor Block
 <!-- <img src="resources/img/PreviewMate-Example.gif" width="100%" style="max-width: 800px;" /> -->
@@ -43,7 +43,7 @@ return [
 ```
 
 ## Template Configuration
-##### Each element rendered from a Matrix Field needs either of the two tags in order to work with Live Preview click and scroll.
+##### Each block/ element rendered from a Matrix Field needs either of the two tags in order to work with Live Preview click and scroll.
 ##### `excludedBlocks` will be ignored and do not need `preview-block` tag
 ```twig
 {# option 1 #}
@@ -54,7 +54,7 @@ return [
 preview-block="replaceWithMatrixFieldHandleHere"
 ```
 
-#### Example with a Matrix Field
+##### Twig example with a Matrix Field
 ```twig
 {% set blocks = entry.pageBuilder.all() %}
 
@@ -63,27 +63,27 @@ preview-block="replaceWithMatrixFieldHandleHere"
         {{ include("_blocks/" ~ block.type.handle|kebab) }}
     </div>
 {% endfor %}
-
-<style>
-    [preview-block] {
+```
+##### Optional: CSS for Dashed Border when hovering Preview Blocks
+```css
+[preview-block] {
         position: relative;
     }
-    [preview-block]::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 1px dashed rgba(0, 0, 0, .333);
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 300ms ease;
-    }
-    [preview-block].is-hovering::after {
-        opacity: 1;
-    }
-</style>
+[preview-block]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed rgba(0, 0, 0, .333);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms ease;
+}
+[preview-block].is-hovering::after {
+    opacity: 1;
+}
 ```
 
 ## Caveats
