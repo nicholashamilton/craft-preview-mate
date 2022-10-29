@@ -85,3 +85,7 @@ preview-block="replaceWithMatrixFieldHandleHere"
     }
 </style>
 ```
+
+## Caveats
+
+##### PreviewMate has only been tested with Server Side Rendered Matrix Blocks.
