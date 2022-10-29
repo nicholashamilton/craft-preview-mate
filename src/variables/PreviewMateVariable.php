@@ -1,8 +1,8 @@
 <?php
 /**
- * PreviewMate plugin for Craft CMS 4.x
+ * PreviewMate plugin for Craft CMS
  *
- * CraftCMS matrix tools for Live Preview.
+ * CraftCMS matrix tools for Live Preview
  *
  * @link      https://github.com/nicholashamilton
  * @copyright Copyright (c) 2022 Nicholas Hamilton
@@ -18,9 +18,6 @@ use craft\elements\MatrixBlock;
 
 /**
  * PreviewMate Variable
- *
- * Craft allows plugins to provide their own template variables, accessible from
- * the {{ craft }} global variable (e.g. {{ craft.previewMate }}).
  *
  * https://craftcms.com/docs/plugins/variables
  *

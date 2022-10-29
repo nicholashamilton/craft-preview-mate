@@ -1,8 +1,8 @@
 <?php
 /**
- * PreviewMate plugin for Craft CMS 4.x
+ * PreviewMate plugin for Craft CMS
  *
- * CraftCMS matrix tools for Live Preview.
+ * CraftCMS matrix tools for Live Preview
  *
  * @link      https://github.com/nicholashamilton
  * @copyright Copyright (c) 2022 Nicholas Hamilton
@@ -19,10 +19,6 @@ use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 /**
- * Twig can be extended in many ways; you can add extra tags, filters, tests, operators,
- * global variables, and functions. You can even extend the parser itself with
- * node visitors.
- *
  * http://twig.sensiolabs.org/doc/advanced.html
  *
  * @author    Nicholas Hamilton

@@ -1,8 +1,8 @@
 <?php
 /**
- * PreviewMate plugin for Craft CMS 4.x
+ * PreviewMate plugin for Craft CMS
  *
- * CraftCMS matrix tools for Live Preview.
+ * CraftCMS matrix tools for Live Preview
  *
  * @link      https://github.com/nicholashamilton
  * @copyright Copyright (c) 2022 Nicholas Hamilton

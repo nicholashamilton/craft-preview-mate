@@ -1,8 +1,8 @@
 <?php
 /**
- * PreviewMate plugin for Craft CMS 4.x
+ * PreviewMate plugin for Craft CMS
  *
- * CraftCMS matrix tools for Live Preview.
+ * CraftCMS matrix tools for Live Preview
  *
  * @link      https://github.com/nicholashamilton
  * @copyright Copyright (c) 2022 Nicholas Hamilton
@@ -17,11 +17,6 @@ use craft\base\Model;
 
 /**
  * PreviewMate Settings Model
- *
- * This is a model used to define the plugin's settings.
- *
- * Models are containers for data. Just about every time information is passed
- * between services, controllers, and templates in Craft, it’s passed via a model.
  *
  * https://craftcms.com/docs/plugins/models
  *
