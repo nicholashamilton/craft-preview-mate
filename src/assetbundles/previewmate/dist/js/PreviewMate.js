@@ -25,6 +25,11 @@
 
         firstCheck: function() {
             Craft.PreviewMate.init();
+
+            if (!Craft.PreviewMate.hasPreviewButton()) {
+                Craft.PreviewMate.clearPreviewModuleChecker();
+                return;
+            }
         },
 
         previewModuleChecker: setInterval(function () {
@@ -36,11 +41,6 @@
         },
 
         init() {
-            if (!Craft.PreviewMate.hasPreviewButton()) {
-                Craft.PreviewMate.clearPreviewModuleChecker();
-                return;
-            }
-
             Craft.PreviewMate.lpEditorContainer = document.querySelector('.lp-editor-container');
             Craft.PreviewMate.lpDevicePreviewContainer = document.querySelector(".lp-device-preview-container");
 

@@ -1,9 +1,8 @@
 # PreviewMate
 
 ##### Click Preview Block -> Scroll to Editor Block
-<!-- <img src="resources/img/PreviewMate-Example.gif" width="100%" style="max-width: 800px;" /> -->
-##### 🟦 Preview Blocks - Rendered Blocks on right side of Live Preview
-##### 🟨 Editor Blocks - Matrix Blocks on Left side of Live Preview
+<img src="resources/img/PreviewMate-min.gif" width="100%" style="max-width: 800px;" />
+##### 🟦 Editor Blocks on Left - 🟨 Preview Blocks on Right
 
 ## Requirements
 This plugin requires Craft CMS 4 or later.
@@ -56,10 +55,11 @@ preview-block="replaceWithMatrixFieldHandleHere"
 
 ##### Twig example with a Matrix Field
 ```twig
-{% set blocks = entry.pageBuilder.all() %}
+{% set matrixHandle = "pageBuilder" %}
+{% set blocks = entry[matrixHandle].all() %}
 
 {% for block in blocks %}
-    <div {{ craft.previewMate.previewBlock("pageBuilder") }}>
+    <div {{ craft.previewMate.previewBlock(matrixHandle) }}>
         {{ include("_blocks/" ~ block.type.handle|kebab) }}
     </div>
 {% endfor %}
@@ -67,8 +67,8 @@ preview-block="replaceWithMatrixFieldHandleHere"
 ##### Optional: CSS for Dashed Border when hovering Preview Blocks
 ```css
 [preview-block] {
-        position: relative;
-    }
+    position: relative;
+}
 [preview-block]::after {
     content: "";
     position: absolute;
