@@ -2,6 +2,7 @@
 
 ##### Click Preview Block -> Scroll to Editor Block
 <img src="resources/img/PreviewMate-min.gif" width="100%" style="max-width: 800px;" />
+
 ##### 🟦 Editor Blocks on Left - 🟨 Preview Blocks on Right
 
 ## Requirements
