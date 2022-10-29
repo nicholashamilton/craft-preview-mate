@@ -1,5 +1,10 @@
 # PreviewMate - Live Preview Plugin
 
+##### Click Preview Block -> Scroll to Editor Block
+<!-- <img src="resources/img/PreviewMate-Example.gif" width="100%" style="max-width: 800px;" /> -->
+##### 🟦 Preview Blocks - Rendered Blocks on right side of Live Preview
+##### 🟨 Editor Blocks - Matrix Blocks on Left side of Live Preview
+
 ## Requirements
 This plugin requires Craft CMS 4 or later.
 
@@ -15,10 +20,6 @@ To install the plugin, follow these instructions.
         composer require nicholashamilton/craft-preview-mate
 		
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for PreviewMate.
-
-## Core Concepts
-🟨 Editor Blocks - Blocks on left side in preview view
-🟦 Preview Blocks - Block on right side in device preview view
 
 ## Config
 ##### `config/preview-mate.php`
@@ -42,16 +43,24 @@ return [
 ```
 
 ## Template Configuration
-#### Each individual matrix block needs a `preview-block="{{ matrixHandle }}"` tag (unless block is in excludeBlocks array in config)
-##### `templates/_page-builder/index.twig`
+##### Each element rendered from a Matrix Field needs either of the two tags in order to work with Live Preview click and scroll.
+##### `excludedBlocks` will be ignored and do not need `preview-block` tag
+```twig
+{# option 1 #}
+{{ craft.previewMate.previewBlock("replaceWithMatrixFieldHandleHere") }}
+```
+```twig
+{# option 2 #}
+preview-block="replaceWithMatrixFieldHandleHere"
+```
 
+#### Example with a Matrix Field
 ```twig
 {% set blocks = entry.pageBuilder.all() %}
 
 {% for block in blocks %}
     <div {{ craft.previewMate.previewBlock("pageBuilder") }}>
-        {% set blockIncludePath = "_blocks/" ~ block.type.handle|kebab %}
-        {% include blockIncludePath %}
+        {{ include("_blocks/" ~ block.type.handle|kebab) }}
     </div>
 {% endfor %}
 
