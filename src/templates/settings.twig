@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * PreviewMate plugin for Craft CMS 4.x
+ *
+ * PreviewMate Settings.twig
+ *
+ * @author    Nicholas Hamilton
+ * @copyright Copyright (c) 2022 Nicholas Hamilton
+ * @link      https://github.com/nicholashamilton
+ * @package   PreviewMate
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("nicholashamilton\\previewmate\\assetbundles\\previewmate\\PreviewMateAsset") %}
+
+{# {{ forms.textField({
+    label: 'Some Field',
+    instructions: 'Enter some setting here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: settings['someAttribute']})
+}} #}
