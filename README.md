@@ -87,7 +87,7 @@ preview-block="replaceWithMatrixFieldHandleHere"
 }
 ```
 
-##### [Example](https://github.com/nicholashamilton/craft-preview-mate/tree/example/templates)
+##### [Example](https://github.com/nicholashamilton/craft-preview-mate/tree/main/example/templates)
 
 ## Caveats
 
