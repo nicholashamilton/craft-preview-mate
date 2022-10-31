@@ -87,6 +87,8 @@ preview-block="replaceWithMatrixFieldHandleHere"
 }
 ```
 
+##### [Example](https://github.com/nicholashamilton/craft-preview-mate/tree/example/templates)
+
 ## Caveats
 
 ##### - PreviewMate has only been tested with Server Side Rendered Matrix Blocks
