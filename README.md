@@ -31,7 +31,7 @@ return [
     "matrixFields" => [
         [
             "handle" => "pageBuilder",
-            "excludeBlocks" => [
+            "excludedBlocks" => [
                 "rowContainer",
             ],
         ],
@@ -44,7 +44,7 @@ return [
 
 ## Template Configuration
 ##### Each block/ element rendered from a Matrix Field needs either of the two tags in order to work with Live Preview click and scroll.
-##### `excludedBlocks` will be ignored and do not need `preview-block` tag
+##### `excludedBlocks` will be ignored and do not need `preview-block` tag.
 ```twig
 {# option 1 #}
 {{ craft.previewMate.previewBlock("replaceWithMatrixFieldHandleHere") }}
@@ -89,4 +89,5 @@ preview-block="replaceWithMatrixFieldHandleHere"
 
 ## Caveats
 
-##### PreviewMate has only been tested with Server Side Rendered Matrix Blocks.
+##### - PreviewMate has only been tested with Server Side Rendered Matrix Blocks
+##### - Nesting `preview-blocks` is not supported currently, use `excludedBlocks` to disable blocks

@@ -19,7 +19,7 @@ return [
         ],
         [
             "handle" => "pageBuilder",
-            "excludeBlocks" => [
+            "excludedBlocks" => [
                 "rowContainer",
             ],
         ],

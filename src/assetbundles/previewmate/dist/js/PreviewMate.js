@@ -99,7 +99,7 @@
             Craft.PreviewMate.settings.matrixFields.forEach((field) => {
                 if (typeof field.handle !== "string") return;
                 const matrixHandle = field.handle;
-                const editorBlocksQuery = Craft.PreviewMate.getEditorBlocksQuerySelectorString(matrixHandle, field.excludeBlocks);
+                const editorBlocksQuery = Craft.PreviewMate.getEditorBlocksQuerySelectorString(matrixHandle, field.excludedBlocks);
                 const previewBlocksQuery = Craft.PreviewMate.getPreviewBlocksQueryString(matrixHandle);
 
                 const editorBlocks = Craft.PreviewMate.lpEditorContainer.querySelectorAll(editorBlocksQuery);
@@ -130,10 +130,10 @@
             });
         },
 
-        getEditorBlocksQuerySelectorString(matrixHandle, excludeBlocks) {
+        getEditorBlocksQuerySelectorString(matrixHandle, excludedBlocks) {
             let editorMatrixQuery = ".matrix.matrix-field#fields-" + matrixHandle + " .blocks div.matrixblock:not(.disabled):not(.superTableMatrix)";
-            if (Array.isArray(excludeBlocks) && excludeBlocks.length) {
-                excludeBlocks.forEach(blockHandle => {
+            if (Array.isArray(excludedBlocks) && excludedBlocks.length) {
+                excludedBlocks.forEach(blockHandle => {
                     if (typeof blockHandle === "string") {
                         editorMatrixQuery += ":not([data-type='" + blockHandle + "'])";
                     }
