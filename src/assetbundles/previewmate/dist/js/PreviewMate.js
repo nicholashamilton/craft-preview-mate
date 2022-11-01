@@ -23,12 +23,9 @@
         lpDevicePreviewContainer: null,
         dpcIframeElement: null,
 
-        firstCheck: function() {
-            Craft.PreviewMate.init();
-
+        onMount: function() {
             if (!Craft.PreviewMate.hasPreviewButton()) {
                 Craft.PreviewMate.clearPreviewModuleChecker();
-                return;
             }
         },
 
