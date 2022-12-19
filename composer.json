@@ -11,8 +11,8 @@
         "previewmate"
     ],
     "support": {
-        "docs": "https://github.com/Nicholas Hamilton/craft-preview-mate/blob/master/README.md",
-        "issues": "https://github.com/Nicholas Hamilton/craft-preview-mate/issues"
+        "docs": "https://github.com/nicholashamilton/craft-preview-mate/blob/master/README.md",
+        "issues": "https://github.com/nicholashamilton/craft-preview-mate/issues"
     },
     "license": "MIT",
     "authors": [
@@ -39,8 +39,8 @@
         "handle": "preview-mate",
         "developer": "Nicholas Hamilton",
         "developerUrl": "https://github.com/nicholashamilton",
-        "documentationUrl": "https://github.com/Nicholas Hamilton/craft-preview-mate/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/Nicholas Hamilton/craft-preview-mate/master/CHANGELOG.md",
+        "documentationUrl": "https://github.com/nicholashamilton/craft-preview-mate/blob/master/README.md",
+        "changelogUrl": "https://raw.githubusercontent.com/nicholashamilton/craft-preview-mate/master/CHANGELOG.md",
         "components": {
             "previewMateService": "nicholashamilton\\previewmate\\services\\PreviewMateService"
         },
