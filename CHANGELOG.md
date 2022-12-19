@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 1.0.1 - 2022-12-19
 ### Fixed
 - Exclude nested editor matrix blocks from query. Edge case occured when using Matrix -> Super Table -> Matrix.
+
 ### Removed
 - Craft tests
 
