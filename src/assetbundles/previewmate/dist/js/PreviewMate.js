@@ -100,7 +100,7 @@
                 const previewBlocksQuery = Craft.PreviewMate.getPreviewBlocksQueryString(matrixHandle);
 
                 const editorBlocks = [];
-                Craft.PreviewMate.lpEditorContainer.querySelectorAll(editorBlocksQuery).forEach(function removeNestedMatrixBlocks(block) {
+                Craft.PreviewMate.lpEditorContainer.querySelectorAll(editorBlocksQuery).forEach(function excludeNestedMatrixBlocks(block) {
                     const parentMatrixBlock = block.parentElement.closest("div.matrixblock");
                     if (!parentMatrixBlock) editorBlocks.push(block);
                 });
