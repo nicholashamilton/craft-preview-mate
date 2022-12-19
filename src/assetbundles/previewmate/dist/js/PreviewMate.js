@@ -23,7 +23,7 @@
         lpDevicePreviewContainer: null,
         dpcIframeElement: null,
 
-        onMount: function() {
+        onMount() {
             if (!Craft.PreviewMate.hasPreviewButton()) {
                 Craft.PreviewMate.clearPreviewModuleChecker();
             }
@@ -99,7 +99,11 @@
                 const editorBlocksQuery = Craft.PreviewMate.getEditorBlocksQuerySelectorString(matrixHandle, field.excludedBlocks);
                 const previewBlocksQuery = Craft.PreviewMate.getPreviewBlocksQueryString(matrixHandle);
 
-                const editorBlocks = Craft.PreviewMate.lpEditorContainer.querySelectorAll(editorBlocksQuery);
+                const editorBlocks = [];
+                Craft.PreviewMate.lpEditorContainer.querySelectorAll(editorBlocksQuery).forEach(function removeNestedMatrixBlocks(block) {
+                    const parentMatrixBlock = block.parentElement.closest("div.matrixblock");
+                    if (!parentMatrixBlock) editorBlocks.push(block);
+                });
                 const previewBlocks = iframe.contentWindow.document.body.querySelectorAll(previewBlocksQuery);
 
                 if (editorBlocks.length !== previewBlocks.length) return;
@@ -173,5 +177,7 @@
             return settingsResponse;
         },
     };
+
+    Craft.PreviewMate.onMount();
 
 })(jQuery);
