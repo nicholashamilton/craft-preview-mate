@@ -2,7 +2,6 @@
     "name": "nicholashamilton/craft-preview-mate",
     "description": "CraftCMS matrix tools for Live Preview.",
     "type": "craft-plugin",
-    "version": "1.0.1",
     "keywords": [
         "craft",
         "cms",
@@ -22,12 +21,8 @@
         }
     ],
     "require": {
+        "php": "^8.0.2",
         "craftcms/cms": "^4.0.0"
-    },
-    "require-dev": {
-      "craftcms/cms": "^4.0.0",
-      "codeception/codeception": "^3.0",
-      "vlucas/phpdotenv": "^3.0"
     },
     "autoload": {
         "psr-4": {
