@@ -2,7 +2,6 @@
     "name": "nicholashamilton/craft-preview-mate",
     "description": "CraftCMS matrix tools for Live Preview.",
     "type": "craft-plugin",
-    "version": "1.0.1",
     "keywords": [
         "craft",
         "cms",
