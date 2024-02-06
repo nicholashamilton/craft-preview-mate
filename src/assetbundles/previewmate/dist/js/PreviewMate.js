@@ -51,19 +51,15 @@
         async initPreviewModule() {
             Craft.PreviewMate.settings = await Craft.PreviewMate.getSettings();
 
-            Craft.PreviewMate.initDpc();
+            Craft.PreviewMate.findDpcIframe();
 
             Craft.PreviewMate.observeLpDpc();
         },
 
-        registerNewDpcIframe(iframe) {
+        registerDpcIframe(iframe) {
             Craft.PreviewMate.dpcIframeElement = iframe;
 
-            if (Craft.PreviewMate.dpcIframeElement.contentDocument.readyState === 'complete') {
-                Craft.PreviewMate.attatchPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
-            } else {
-                Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handleDpcIframeOnLoadEvent;
-            }
+            Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handleDpcIframeOnLoadEvent;
         },
 
         observeLpDpc() {
@@ -78,19 +74,19 @@
 
                 if (!isNewNodeLivePreviewIframe) return;
 
-                Craft.PreviewMate.registerNewDpcIframe(recentlyAddedNode);
+                Craft.PreviewMate.registerDpcIframe(recentlyAddedNode);
             }
 
             const dpcObserver = new MutationObserver(callback);
             dpcObserver.observe(Craft.PreviewMate.lpDevicePreviewContainer, observerConfig);
         },
 
-        initDpc() {
+        findDpcIframe() {
             const dpcIframeElement = Craft.PreviewMate.lpDevicePreviewContainer.querySelector("iframe");
 
             if (!dpcIframeElement) return;
 
-            Craft.PreviewMate.registerNewDpcIframe(dpcIframeElement);
+            Craft.PreviewMate.registerDpcIframe(dpcIframeElement);
         },
 
         handleDpcIframeOnLoadEvent(e) {
