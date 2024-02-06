@@ -53,7 +53,7 @@
 
             Craft.PreviewMate.initDpc();
 
-            Craft.PreviewMate.observeDpc();
+            Craft.PreviewMate.observeLpDpc();
         },
 
         registerNewDpcIframe(iframe) {
@@ -66,7 +66,7 @@
             }
         },
 
-        observeDpc() {
+        observeLpDpc() {
             const observerConfig = { childList: true };
 
             function callback(mutationsList) {
