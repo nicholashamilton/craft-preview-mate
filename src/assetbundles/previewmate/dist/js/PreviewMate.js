@@ -51,12 +51,18 @@
         async initPreviewModule() {
             Craft.PreviewMate.settings = await Craft.PreviewMate.getSettings();
 
-            Craft.PreviewMate.initDevicePreviewIframe();
+            Craft.PreviewMate.findDpcIframe();
 
-            Craft.PreviewMate.observeDevicePreviewContainer();
+            Craft.PreviewMate.observeLpDpc();
         },
 
-        observeDevicePreviewContainer() {
+        registerDpcIframe(iframe) {
+            Craft.PreviewMate.dpcIframeElement = iframe;
+
+            Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handleDpcIframeOnLoadEvent;
+        },
+
+        observeLpDpc() {
             const observerConfig = { childList: true };
 
             function callback(mutationsList) {
@@ -68,25 +74,22 @@
 
                 if (!isNewNodeLivePreviewIframe) return;
 
-                Craft.PreviewMate.dpcIframeElement = recentlyAddedNode;
-
-                Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handlePreviewIframeLoad;
+                Craft.PreviewMate.registerDpcIframe(recentlyAddedNode);
             }
 
             const dpcObserver = new MutationObserver(callback);
             dpcObserver.observe(Craft.PreviewMate.lpDevicePreviewContainer, observerConfig);
         },
 
-        initDevicePreviewIframe() {
-            Craft.PreviewMate.dpcIframeElement = Craft.PreviewMate.lpDevicePreviewContainer.querySelector("iframe");
+        findDpcIframe() {
+            const dpcIframeElement = Craft.PreviewMate.lpDevicePreviewContainer.querySelector("iframe");
 
-            if (!Craft.PreviewMate.dpcIframeElement) return;
+            if (!dpcIframeElement) return;
 
-            Craft.PreviewMate.attatchPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
-            Craft.PreviewMate.dpcIframeElement.onload = Craft.PreviewMate.handlePreviewIframeLoad;
+            Craft.PreviewMate.registerDpcIframe(dpcIframeElement);
         },
 
-        handlePreviewIframeLoad(e) {
+        handleDpcIframeOnLoadEvent(e) {
             Craft.PreviewMate.dpcIframeElement = e.currentTarget;
 
             Craft.PreviewMate.attatchPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
