@@ -1,12 +1,4 @@
 <?php
-/**
- * PreviewMate plugin for Craft CMS
- *
- * CraftCMS matrix tools for Live Preview
- *
- * @link      https://github.com/nicholashamilton
- * @copyright Copyright (c) 2022 Nicholas Hamilton
- */
 
 namespace nicholashamilton\previewmate\twigextensions;
 
@@ -20,10 +12,6 @@ use Twig\TwigFunction;
 
 /**
  * http://twig.sensiolabs.org/doc/advanced.html
- *
- * @author    Nicholas Hamilton
- * @package   PreviewMate
- * @since     1.0.0
  */
 class PreviewMateTwigExtension extends AbstractExtension
 {

@@ -1,12 +1,4 @@
 <?php
-/**
- * PreviewMate plugin for Craft CMS
- *
- * CraftCMS matrix tools for Live Preview
- *
- * @link      https://github.com/nicholashamilton
- * @copyright Copyright (c) 2022 Nicholas Hamilton
- */
 
 namespace nicholashamilton\previewmate;
 
@@ -28,30 +20,15 @@ use craft\events\TemplateEvent;
 
 use yii\base\Event;
 
-/**
- * @author    Nicholas Hamilton
- * @package   PreviewMate
- * @since     1.0.0
- */
-class PreviewMate extends Plugin
-{
-    // Static Properties
-    // =========================================================================
+class PreviewMate extends Plugin {
 
     public static PreviewMate $plugin;
-
-    // Public Properties
-    // =========================================================================
 
     public string$schemaVersion = '1.0.0';
     public bool $hasCpSettings = false;
     public bool $hasCpSection = false;
 
-    // Public Methods
-    // =========================================================================
-
-    public function init()
-    {
+    public function init() {
         parent::init();
         self::$plugin = $this;
 
@@ -71,24 +48,24 @@ class PreviewMate extends Plugin
 
         $this->afterInstall();
 
-/**
- * Logging in Craft involves using one of the following methods:
- *
- * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
- * Craft::info(): record a message that conveys some useful information.
- * Craft::warning(): record a warning message that indicates something unexpected has happened.
- * Craft::error(): record a fatal error that should be investigated as soon as possible.
- *
- * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
- *
- * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
- * the category to the method (prefixed with the fully qualified class name) where the constant appears.
- *
- * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
- * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
- *
- * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
- */
+        /**
+         * Logging in Craft involves using one of the following methods:
+         *
+         * Craft::trace(): record a message to trace how a piece of code runs. This is mainly for development use.
+         * Craft::info(): record a message that conveys some useful information.
+         * Craft::warning(): record a warning message that indicates something unexpected has happened.
+         * Craft::error(): record a fatal error that should be investigated as soon as possible.
+         *
+         * Unless `devMode` is on, only Craft::warning() & Craft::error() will log to `craft/storage/logs/web.log`
+         *
+         * It's recommended that you pass in the magic constant `__METHOD__` as the second parameter, which sets
+         * the category to the method (prefixed with the fully qualified class name) where the constant appears.
+         *
+         * To enable the Yii debug toolbar, go to your user account in the AdminCP and check the
+         * [] Show the debug toolbar on the front end & [] Show the debug toolbar on the Control Panel
+         *
+         * http://www.yiiframework.com/doc-2.0/guide-runtime-logging.html
+         */
         Craft::info(
             Craft::t(
                 'preview-mate',
@@ -99,16 +76,11 @@ class PreviewMate extends Plugin
         );
     }
 
-    // Protected Methods
-    // =========================================================================
-
-    protected function createSettingsModel(): ?Settings
-    {
+    protected function createSettingsModel(): ?Settings {
         return new Settings();
     }
 
-    protected function settingsHtml(): string
-    {
+    protected function settingsHtml(): string {
         return Craft::$app->view->renderTemplate(
             'preview-mate/settings',
             [
@@ -117,8 +89,7 @@ class PreviewMate extends Plugin
         );
     }
 
-    protected function loadAssetBundle()
-    {
+    protected function loadAssetBundle() {
         if (Craft::$app->getRequest()->getIsCpRequest()) {
             Event::on(
                 View::class,
@@ -137,8 +108,7 @@ class PreviewMate extends Plugin
         }
     }
 
-    protected function registerSiteRoutes()
-    {
+    protected function registerSiteRoutes() {
         Event::on(
             UrlManager::class,
             UrlManager::EVENT_REGISTER_SITE_URL_RULES,
@@ -148,8 +118,7 @@ class PreviewMate extends Plugin
         );
     }
 
-    protected function registerCpRoutes()
-    {
+    protected function registerCpRoutes() {
         Event::on(
             UrlManager::class,
             UrlManager::EVENT_REGISTER_CP_URL_RULES,
@@ -159,8 +128,7 @@ class PreviewMate extends Plugin
         );
     }
 
-    protected function registerVariables()
-    {
+    protected function registerVariables() {
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
@@ -172,8 +140,7 @@ class PreviewMate extends Plugin
         );
     }
 
-    protected function afterInstall(): void
-    {
+    protected function afterInstall(): void {
         Event::on(
             Plugins::class,
             Plugins::EVENT_AFTER_INSTALL_PLUGIN,

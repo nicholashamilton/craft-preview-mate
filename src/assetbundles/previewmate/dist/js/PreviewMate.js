@@ -1,15 +1,3 @@
-/**
- * PreviewMate plugin for Craft CMS
- *
- * PreviewMate JS
- *
- * @author    Nicholas Hamilton
- * @copyright Copyright (c) 2022 Nicholas Hamilton
- * @link      https://github.com/nicholashamilton
- * @package   PreviewMate
- * @since     1.0.0
- */
-
 /** global: jQuery */
 /** global: Craft */
 /** global: Garnish */
