@@ -21,12 +21,12 @@
         }
     ],
     "require": {
-        "php": "^8.0.2",
-        "craftcms/cms": "^4.0.0"
+        "php": "^8.2",
+        "craftcms/cms": "^5.0.0-beta.1"
     },
     "autoload": {
         "psr-4": {
-          "nicholashamilton\\previewmate\\": "src/"
+            "nicholashamilton\\previewmate\\": "src/"
         }
     },
     "extra": {
@@ -40,5 +40,11 @@
             "previewMateService": "nicholashamilton\\previewmate\\services\\PreviewMateService"
         },
         "class": "nicholashamilton\\previewmate\\PreviewMate"
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
     }
 }

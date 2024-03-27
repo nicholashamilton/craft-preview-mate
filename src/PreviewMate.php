@@ -24,7 +24,7 @@ class PreviewMate extends Plugin {
 
     public static PreviewMate $plugin;
 
-    public string$schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.0';
     public bool $hasCpSettings = false;
     public bool $hasCpSection = false;
 
