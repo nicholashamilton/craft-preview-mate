@@ -6,7 +6,7 @@
 ##### 🟦 Editor Blocks on Left - 🟨 Preview Blocks on Right
 
 ## Requirements
-This plugin requires Craft CMS 4 or later.
+This plugin supports Craft CMS 4 and 5.
 
 ## Installation
 To install the plugin, follow these instructions.
