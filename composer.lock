@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fcb3f00431bb9f0a1f20de4c6a3b831",
+    "content-hash": "9e9edd607b93848919b2728a0df7bf53",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6641,103 +6641,11 @@
             "time": "2024-01-29T14:13:45+00:00"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "craftcms/phpstan",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/craftcms/phpstan.git",
-                "reference": "b61bba102b5ec8599406e6e29a28a20c915a6abc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/phpstan/zipball/b61bba102b5ec8599406e6e29a28a20c915a6abc",
-                "reference": "b61bba102b5ec8599406e6e29a28a20c915a6abc",
-                "shasum": ""
-            },
-            "require": {
-                "phpstan/phpstan": "^1.4.6"
-            },
-            "default-branch": true,
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "PHPStan configuration for Craft CMS projects",
-            "support": {
-                "issues": "https://github.com/craftcms/phpstan/issues",
-                "source": "https://github.com/craftcms/phpstan/tree/main"
-            },
-            "time": "2022-04-12T20:50:18+00:00"
-        },
-        {
-            "name": "phpstan/phpstan",
-            "version": "1.10.65",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "3c657d057a0b7ecae19cb12db446bbc99d8839c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3c657d057a0b7ecae19cb12db446bbc99d8839c6",
-                "reference": "3c657d057a0b7ecae19cb12db446bbc99d8839c6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0"
-            },
-            "conflict": {
-                "phpstan/phpstan-shim": "*"
-            },
-            "bin": [
-                "phpstan",
-                "phpstan.phar"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "keywords": [
-                "dev",
-                "static analysis"
-            ],
-            "support": {
-                "docs": "https://phpstan.org/user-guide/getting-started",
-                "forum": "https://github.com/phpstan/phpstan/discussions",
-                "issues": "https://github.com/phpstan/phpstan/issues",
-                "security": "https://github.com/phpstan/phpstan/security/policy",
-                "source": "https://github.com/phpstan/phpstan-src"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ondrejmirtes",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/phpstan",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-03-23T10:30:26+00:00"
-        }
-    ],
+    "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "craftcms/phpstan": 20
-    },
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
