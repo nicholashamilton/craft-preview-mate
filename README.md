@@ -1,77 +1,61 @@
-# PreviewMate
+# PreviewMate v3
 
-##### Click Preview Block -> Scroll to Editor Block
-<img src="resources/img/PreviewMate-min.gif" width="100%" style="max-width: 800px;" />
-
-##### 🟦 Editor Blocks on Left - 🟨 Preview Blocks on Right
+Find your editor blocks with ease in live preview.
 
 ## Requirements
-This plugin supports Craft CMS 4 and 5.
+This plugin supports Craft CMS 5.0+
 
 ## Installation
 To install the plugin, follow these instructions.
 
 1. Open your terminal and go to your Craft project:
 
-        cd /path/to/project
-		
+    cd /path/to/project
+
 2. Then tell Composer to load the plugin:
 
-        composer require nicholashamilton/craft-preview-mate
-		
+    composer require nicholashamilton/craft-preview-mate
+
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for PreviewMate.
 
-## Config
-##### `config/preview-mate.php`
+## How to use
 
-```php
-<?php
+Entry blocks will be tracked in live preview when adding the `preview-block-id` attribute to the entry's HTML element.
 
-return [
-    "matrixFields" => [
-        [
-            "handle" => "pageBuilder",
-            "excludedBlocks" => [
-                "rowContainer",
-            ],
-        ],
-        [
-            "handle" => "ctaBlocks",
-        ],
-    ],
-];
-```
-
-## Template Configuration
-##### Each block/ element rendered from a Matrix Field needs either of the two tags in order to work with Live Preview click and scroll.
-##### `excludedBlocks` will be ignored and do not need `preview-block` tag.
 ```twig
 {# option 1 #}
-{{ craft.previewMate.previewBlock("replaceWithMatrixFieldHandleHere") }}
+{{ craft.previewMate.previewBlock(entry) }}
 ```
 ```twig
 {# option 2 #}
-preview-block="replaceWithMatrixFieldHandleHere"
+preview-block-id="{{ entry.id }}"
 ```
 
-##### Twig example with a Matrix Field
-```twig
-{% set matrixHandle = "pageBuilder" %}
-{% set blocks = entry[matrixHandle].all() %}
+That element will now be tracked in the live preview. Clicking on it in the preview will scroll you to the element in the editor. Hovering over it will highlight both the editor and preview elements.
 
-{% for block in blocks %}
-    <div {{ craft.previewMate.previewBlock(matrixHandle) }}>
-        {{ include("_blocks/" ~ block.type.handle|kebab) }}
+## Usage example 
+
+```twig
+{# Matrix field #}
+{% set blocks = entry.blocksBuilder.all() %}
+
+{# Render blocks #}
+{% for previewBlock in blocks %}
+    <div {{ craft.previewMate.previewBlock(entry) }}>
+        {{ previewBlock.render() }}
     </div>
 {% endfor %}
 ```
-##### Optional: CSS for Dashed Border when hovering Preview Blocks
+
+Add styles for preview blocks using `preview-block-id`.
+The styles will only be applied during live preview.
+
 ```css
-[preview-block] {
+[preview-block-id] {
     position: relative;
 }
-[preview-block]::after {
-    content: "";
+[preview-block-id]::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -82,14 +66,7 @@ preview-block="replaceWithMatrixFieldHandleHere"
     opacity: 0;
     transition: opacity 300ms ease;
 }
-[preview-block].is-hovering::after {
+[preview-block-id].preview-block-hover::after {
     opacity: 1;
 }
 ```
-
-##### [Example](https://github.com/nicholashamilton/craft-preview-mate/tree/main/example/templates)
-
-## Caveats
-
-##### - PreviewMate has only been tested with Server Side Rendered Matrix Blocks
-##### - Nesting `preview-blocks` is not supported currently, use `excludedBlocks` to disable blocks

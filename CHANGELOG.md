@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.0 - 2024-11-09
+### Fixed
+- Support for Craft CMS 5
+### Added
+- Added `preview-block-id` attribute. This is now the default way to wire up PreviewMate to live preview (also a much cleaner approach).
+### Removed
+- Removed `config/PreviewMate.php`. No longer needed after adding `preview-block-id`.
+
 ## 2.0.0 - 2024-03-26
 - Added support for Craft CMS 5.0 or later.
 

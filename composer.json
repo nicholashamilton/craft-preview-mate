@@ -1,50 +1,41 @@
 {
-    "name": "nicholashamilton/craft-preview-mate",
-    "description": "CraftCMS matrix tools for Live Preview.",
-    "type": "craft-plugin",
-    "keywords": [
-        "craft",
-        "cms",
-        "craftcms",
-        "craft-plugin",
-        "previewmate"
-    ],
-    "support": {
-        "docs": "https://github.com/nicholashamilton/craft-preview-mate/blob/master/README.md",
-        "issues": "https://github.com/nicholashamilton/craft-preview-mate/issues"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Nicholas Hamilton",
-            "homepage": "https://github.com/nicholashamilton"
-        }
-    ],
-    "require": {
-        "php": "^8.2",
-        "craftcms/cms": "^5.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "nicholashamilton\\previewmate\\": "src/"
-        }
-    },
-    "extra": {
-        "name": "PreviewMate",
-        "handle": "preview-mate",
-        "developer": "Nicholas Hamilton",
-        "developerUrl": "https://github.com/nicholashamilton",
-        "documentationUrl": "https://github.com/nicholashamilton/craft-preview-mate/blob/master/README.md",
-        "changelogUrl": "https://raw.githubusercontent.com/nicholashamilton/craft-preview-mate/master/CHANGELOG.md",
-        "components": {
-            "previewMateService": "nicholashamilton\\previewmate\\services\\PreviewMateService"
-        },
-        "class": "nicholashamilton\\previewmate\\PreviewMate"
-    },
-    "config": {
-        "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "craftcms/plugin-installer": true
-        }
+  "name": "nicholashamilton/craft-preview-mate",
+  "description": "Find your editor blocks with ease in live preview.",
+  "type": "craft-plugin",
+  "keywords": [
+    "craft", "cms", "craftcms", "craft-plugin", "previewmate", "live preview"
+  ],
+  "license": "mit",
+  "support": {
+    "email": "nicholashamilton.co@gmail.com"
+  },
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.0.0"
+  },
+  "require-dev": {
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "nicholashamilton\\previewmate\\": "src/"
     }
+  },
+  "extra": {
+    "handle": "craft-preview-mate",
+    "name": "PreviewMate",
+    "developer": "Nicholas Hamilton",
+    "documentationUrl": "https://github.com/nicholashamilton/craft-preview-mate/tree/craft-5",
+    "class": "nicholashamilton\\previewmate\\PreviewMate"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
 }

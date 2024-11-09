@@ -18,11 +18,11 @@ class PreviewMateAsset extends AssetBundle {
         ];
 
         $this->js = [
-            'js/PreviewMate.js',
+            'js/index.js',
         ];
 
         $this->css = [
-            'css/PreviewMate.css',
+            'css/index.css',
         ];
 
         parent::init();
