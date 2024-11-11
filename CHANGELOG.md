@@ -4,11 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## 3.0.0 - 2024-11-09
+## 3.0.0 - 2024-11-11
 ### Fixed
-- Support for Craft CMS 5
+- Support for Craft CMS 5.
 ### Added
-- Added `preview-block-id` attribute. This is now the default way to wire up PreviewMate to live preview (also a much cleaner approach).
+- Added documentation for Craft CMS 5 usage.
+- Added `preview-block-id` HTML attribute. This is now the default way to connect live preview blocks to editor blocks (also a much cleaner approach).
+### Changed
+- Twig variable `craft.previewMate.previewBlock` now requires an `\craft\elements\Entry` argument which will add the `preview-block-id` attribute to the HTML element.
 ### Removed
 - Removed `config/PreviewMate.php`. No longer needed after adding `preview-block-id`.
 

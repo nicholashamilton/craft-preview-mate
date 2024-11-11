@@ -20,7 +20,7 @@ To install the plugin, follow these instructions.
 
 ## How to use
 
-Entry blocks will be tracked in live preview when adding the `preview-block-id` attribute to the entry's HTML element.
+Preview blocks will be tracked in live preview when adding the `preview-block-id` attribute to the entry's HTML element.
 
 ```twig
 {# option 1 (recommended) - only rendered in live preview #}
@@ -48,7 +48,7 @@ That element will now be tracked in the live preview. Clicking on it in the prev
 {% endfor %}
 ```
 
-Add styles for preview blocks using `preview-block-id`.
+It's recommended to add styles for preview blocks using `preview-block-id`.
 The hovering style will only be toggled during live preview.
 
 ```css
