@@ -1,43 +1,18 @@
-{% set matrixHandle = "pageBuilder" %}
-
-{% set blocks = entry[matrixHandle].all() %}
-
-{% set rowContainerIncludePath = "_page-builder/row-container" %}
-{% set closeRowContainerIncludePath = "_page-builder/row-container/close-row-container" %}
+{% set blocks = entry.pageBuilder.all() %}
 
 {% for block in blocks %}
-
-    {% set blockIncludePath = "_page-builder/" ~ block.type.handle|kebab %}
-
-    {% set isRowContainer = blockIncludePath == rowContainerIncludePath %}
-
-    {% if loop.first and not isRowContainer %}
-        {% include rowContainerIncludePath %}
-    {% endif %}
-
-    {% if not loop.first and isRowContainer %}
-        {% include closeRowContainerIncludePath %}
-    {% endif %}
-
-    {% if isRowContainer %}
-        {% include blockIncludePath %}
-    {% else %}
-        <column-container {{ craft.previewMate.previewBlock(matrixHandle) }}>
-            {% include blockIncludePath %}
-        </column-container>
-    {% endif %}
-
+    <div {{ craft.previewMate.previewBlock(block) }}>
+        {{ block.render() }}
+    </div>
 {% endfor %}
 
-{% include closeRowContainerIncludePath %}
-
-{# highlight the matrix block in live preview when hovering #}
-<style>
-    [preview-block] {
+{# css to highlight the preview block in live preview when hovering #}
+{% css %}
+    [preview-block-id] {
         position: relative;
     }
-    [preview-block]::after {
-        content: "";
+    [preview-block-id]::after {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -48,7 +23,7 @@
         opacity: 0;
         transition: opacity 300ms ease;
     }
-    [preview-block].preview-block-hover::after {
+    [preview-block-id].preview-block-hover::after {
         opacity: 1;
     }
-</style>
+{% endcss %}

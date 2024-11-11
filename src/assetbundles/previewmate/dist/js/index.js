@@ -2,8 +2,6 @@
 /** global: Craft */
 /** global: Garnish */
 
-console.log('PreviewMate');
-
 (function ($) {
     if (!Craft) return;
 
@@ -99,13 +97,11 @@ console.log('PreviewMate');
 
                 previewBlock.addEventListener('mouseenter', function () {
                     previewBlock.classList.add('preview-block-hover');
-                    previewBlock.style.border = '1px dashed #9ba3b5';
                     editorBlock.style.border = '1px dashed #9ba3b5';
                 });
 
                 previewBlock.addEventListener('mouseleave', function () {
                     previewBlock.classList.remove('preview-block-hover');
-                    previewBlock.style.border = '1px dashed transparent';
                     editorBlock.style.border = '1px dashed transparent';
                 });
             });

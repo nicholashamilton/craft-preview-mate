@@ -16,7 +16,7 @@ use nicholashamilton\previewmate\variables\PreviewMateVariable;
 
 class PreviewMate extends Plugin
 {
-    public string $schemaVersion = '1.0.0';
+    // public string $schemaVersion = '1.0.0';
     public bool $hasCpSettings = false;
 
     public static function config(): array

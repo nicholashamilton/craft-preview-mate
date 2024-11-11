@@ -23,11 +23,12 @@ To install the plugin, follow these instructions.
 Entry blocks will be tracked in live preview when adding the `preview-block-id` attribute to the entry's HTML element.
 
 ```twig
-{# option 1 #}
+{# option 1 (recommended) - only rendered in live preview #}
 {{ craft.previewMate.previewBlock(entry) }}
 ```
+or
 ```twig
-{# option 2 #}
+{# option 2 - manually set the preview block id #}
 preview-block-id="{{ entry.id }}"
 ```
 
@@ -40,15 +41,15 @@ That element will now be tracked in the live preview. Clicking on it in the prev
 {% set blocks = entry.blocksBuilder.all() %}
 
 {# Render blocks #}
-{% for previewBlock in blocks %}
-    <div {{ craft.previewMate.previewBlock(entry) }}>
-        {{ previewBlock.render() }}
+{% for block in blocks %}
+    <div {{ craft.previewMate.previewBlock(block) }}>
+        {{ block.render() }}
     </div>
 {% endfor %}
 ```
 
 Add styles for preview blocks using `preview-block-id`.
-The styles will only be applied during live preview.
+The hovering style will only be toggled during live preview.
 
 ```css
 [preview-block-id] {
