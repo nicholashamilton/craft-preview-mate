@@ -1,13 +1,16 @@
 {
   "name": "nicholashamilton/craft-preview-mate",
-  "description": "Find your editor blocks with ease in live preview.",
+  "description": "Find your live preview editor blocks with ease.",
   "type": "craft-plugin",
   "keywords": [
     "craft", "cms", "craftcms", "craft-plugin", "previewmate", "live preview"
   ],
   "license": "mit",
   "support": {
-    "email": "nicholashamilton.co@gmail.com"
+    "email": "nicholashamilton.co@gmail.com",
+    "docs": "https://github.com/nicholashamilton/craft-preview-mate",
+    "source": "https://github.com/nicholashamilton/craft-preview-mate",
+    "issues": "https://github.com/nicholashamilton/craft-preview-mate/issues"
   },
   "require": {
     "php": ">=8.2",
@@ -22,10 +25,12 @@
     }
   },
   "extra": {
-    "handle": "craft-preview-mate",
     "name": "PreviewMate",
-    "developer": "Nicholas Hamilton",
-    "documentationUrl": "https://github.com/nicholashamilton/craft-preview-mate/tree/craft-5",
+    "handle": "craft-preview-mate",
+    "developer": "nicholashamilton",
+    "developerUrl": "https://nicholashamilton.co/",
+    "documentationUrl": "https://github.com/nicholashamilton/craft-preview-mate",
+    "changelogUrl": "https://github.com/nicholashamilton/craft-preview-mate/blob/craft-5/CHANGELOG.md",
     "class": "nicholashamilton\\previewmate\\PreviewMate"
   },
   "config": {

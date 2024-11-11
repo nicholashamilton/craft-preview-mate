@@ -1,6 +1,6 @@
 # PreviewMate v3
 
-Find your editor blocks with ease in live preview.
+Find your live preview editor blocks with ease.
 
 ## Requirements
 This plugin supports Craft CMS 5.0+
