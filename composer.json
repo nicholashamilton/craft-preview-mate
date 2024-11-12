@@ -1,6 +1,6 @@
 {
   "name": "nicholashamilton/craft-preview-mate",
-  "description": "Find your live preview editor blocks with ease.",
+  "description": "Find live preview matrix blocks with ease.",
   "type": "craft-plugin",
   "keywords": [
     "craft", "cms", "craftcms", "craft-plugin", "previewmate", "live preview"
