@@ -26,7 +26,7 @@
   },
   "extra": {
     "name": "PreviewMate",
-    "handle": "craft-preview-mate",
+    "handle": "preview-mate",
     "developer": "nicholashamilton",
     "developerUrl": "https://nicholashamilton.co/",
     "documentationUrl": "https://github.com/nicholashamilton/craft-preview-mate",
