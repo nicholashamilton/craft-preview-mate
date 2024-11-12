@@ -20,6 +20,8 @@ To install the plugin, follow these instructions.
 
 ## How to use
 
+![PreviewMate v3 Demo](./resources/img/PreviewMate_v3_Demo.gif)
+
 Preview blocks will be tracked in live preview when adding the `preview-block-id` attribute to the entry's HTML element.
 
 ```twig
