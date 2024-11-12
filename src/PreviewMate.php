@@ -9,15 +9,13 @@ use craft\base\Model;
 use craft\base\Plugin;
 use craft\events\TemplateEvent;
 use yii\base\InvalidConfigException;
-use nicholashamilton\previewmate\models\Settings;
 use nicholashamilton\previewmate\assetbundles\previewmate\PreviewMateAsset;
 use craft\web\twig\variables\CraftVariable;
 use nicholashamilton\previewmate\variables\PreviewMateVariable;
 
 class PreviewMate extends Plugin
 {
-    // public string $schemaVersion = '1.0.0';
-    public bool $hasCpSettings = false;
+    public string $schemaVersion = '1.0.0';
 
     public static function config(): array
     {
@@ -35,19 +33,6 @@ class PreviewMate extends Plugin
         // Any code that creates an element query or loads Twig should be deferred until
         // after Craft is fully initialized, to avoid conflicts with other plugins/modules
         Craft::$app->onInit(function () {});
-    }
-
-    protected function createSettingsModel(): ?Model
-    {
-        return Craft::createObject(Settings::class);
-    }
-
-    protected function settingsHtml(): ?string
-    {
-        return Craft::$app->view->renderTemplate('craft-preview-mate/_settings.twig', [
-            'plugin' => $this,
-            'settings' => $this->getSettings(),
-        ]);
     }
 
     private function attachEventHandlers(): void
