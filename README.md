@@ -1,4 +1,8 @@
-# PreviewMate
+# PreviewMate v1
+
+> **Note:** You're viewing documentation for Craft CMS 4. [View most recent](https://github.com/nicholashamilton/craft-preview-mate) 
+
+----
 
 ##### Click Preview Block -> Scroll to Editor Block
 <img src="resources/img/PreviewMate-min.gif" width="100%" style="max-width: 800px;" />
@@ -6,7 +10,7 @@
 ##### 🟦 Editor Blocks on Left - 🟨 Preview Blocks on Right
 
 ## Requirements
-This plugin supports Craft CMS 4 and 5.
+This plugin supports Craft CMS 4.x
 
 ## Installation
 To install the plugin, follow these instructions.
