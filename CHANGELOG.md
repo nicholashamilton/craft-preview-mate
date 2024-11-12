@@ -17,7 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 - Twig variable `craft.previewMate.previewBlock` now requires an `\craft\elements\Entry` argument which will add the `preview-block-id` attribute to the HTML element.
 ### Removed
-- Removed `config/PreviewMate.php`. No longer needed after adding `preview-block-id`.
+- Removed `config/preview-mate.php`. No longer needed after adding `preview-block-id`.
 
 ## 2.0.0 - 2024-03-26
 - Added support for Craft CMS 5.0 or later.
