@@ -1,4 +1,4 @@
-# PreviewMate v3
+# PreviewMate v4
 
 Find live preview matrix blocks with ease.
 
@@ -20,9 +20,9 @@ To install the plugin, follow these instructions.
 
 ## How to use
 
-![PreviewMate v3 Demo](./resources/img/PreviewMate_v3_Demo.gif)
+![PreviewMate v4 Demo](./resources/img/PreviewMate_v4_Demo.gif)
 
-Preview blocks will be tracked in live preview when adding the `preview-block-id` attribute to the entry's HTML element.
+Preview blocks will be tracked in live preview by adding `data-preview-block-id` attribute to the entry's HTML element.
 
 ```twig
 {# option 1 (recommended) - only rendered in live preview #}
@@ -31,10 +31,10 @@ Preview blocks will be tracked in live preview when adding the `preview-block-id
 or
 ```twig
 {# option 2 - manually set the preview block id #}
-preview-block-id="{{ entry.id }}"
+data-preview-block-id="{{ entry.id }}"
 ```
 
-That element will now be tracked in the live preview. Clicking on it in the preview will scroll you to the element in the editor. Hovering over it will highlight both the editor and preview elements.
+Clicking a preview block will now scroll to and highlight the editor block.
 
 ## Usage example 
 
@@ -50,14 +50,14 @@ That element will now be tracked in the live preview. Clicking on it in the prev
 {% endfor %}
 ```
 
-It's recommended to add styles for preview blocks using `preview-block-id`.
-The hovering style will only be toggled during live preview.
+It's recommended to add styles for preview blocks using `data-preview-block-id`.
+Adding the following styles will highlight the preview block on hover.
 
 ```css
-[preview-block-id] {
+[data-preview-block-id] {
     position: relative;
 }
-[preview-block-id]::after {
+[data-preview-block-id]::after {
     content: '';
     position: absolute;
     top: 0;
@@ -69,7 +69,7 @@ The hovering style will only be toggled during live preview.
     opacity: 0;
     transition: opacity 300ms ease;
 }
-[preview-block-id].preview-block-hover::after {
+[data-preview-block-id].preview-block-hover::after {
     opacity: 1;
 }
 ```

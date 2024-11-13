@@ -15,6 +15,6 @@ class PreviewMateVariable
             $isPreview = Craft::$app->request->isPreview ?? false;
         }
 
-        return $isPreview ? Template::raw("preview-block-id=\"" . $entry->id . "\"") : '';
+        return $isPreview ? Template::raw("data-preview-block-id=\"" . $entry->id . "\"") : '';
     }
 }

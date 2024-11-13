@@ -81,11 +81,11 @@
         },
 
         attatchPreviewBlockEventListeners(iframe) {
-            const previewBlocks = iframe.contentWindow.document.body.querySelectorAll('[preview-block-id]');
+            const previewBlocks = iframe.contentWindow.document.body.querySelectorAll('[data-preview-block-id]');
 
             previewBlocks.forEach(function (previewBlock) {
 
-                const editorBlock = Craft.PreviewMate.lpEditorContainer.querySelector(`[data-id="${previewBlock.getAttribute('preview-block-id')}"]`);
+                const editorBlock = Craft.PreviewMate.lpEditorContainer.querySelector(`[data-id="${previewBlock.dataset.previewBlockId}"]`);
                 if (!editorBlock) return;
 
                 previewBlock.addEventListener('click', function () {

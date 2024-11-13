@@ -8,10 +8,10 @@
 
 {# css to highlight the preview block in live preview when hovering #}
 {% css %}
-    [preview-block-id] {
+    [data-preview-block-id] {
         position: relative;
     }
-    [preview-block-id]::after {
+    [data-preview-block-id]::after {
         content: '';
         position: absolute;
         top: 0;
@@ -23,7 +23,7 @@
         opacity: 0;
         transition: opacity 300ms ease;
     }
-    [preview-block-id].preview-block-hover::after {
+    [data-preview-block-id].preview-block-hover::after {
         opacity: 1;
     }
 {% endcss %}
