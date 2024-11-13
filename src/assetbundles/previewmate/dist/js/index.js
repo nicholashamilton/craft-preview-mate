@@ -82,13 +82,24 @@
 
         attatchPreviewBlockEventListeners(iframe) {
             const previewBlocks = iframe.contentWindow.document.body.querySelectorAll('[preview-block-id]');
-
+            const tabPanel = Craft.PreviewMate.lpEditorContainer.querySelector('.pane-tabs');
             previewBlocks.forEach(function (previewBlock) {
-
                 const editorBlock = Craft.PreviewMate.lpEditorContainer.querySelector(`[data-id="${previewBlock.getAttribute('preview-block-id')}"]`);
                 if (!editorBlock) return;
-
                 previewBlock.addEventListener('click', function () {
+                    //Preview Tabs
+                    const editorBlockPanel = editorBlock.closest('.flex-fields[role="tabpanel"]');
+                    const hiddenBlockPanels = Craft.PreviewMate.lpEditorContainer.querySelectorAll('.flex-fields.hidden[role="tabpanel"]');
+                    // If the block is in a hidden tab panel, switch to that tab.
+                    // Otherwise scroll the block into view
+                    if (Array.from(hiddenBlockPanels).includes(editorBlockPanel)) {
+                        const correspondingTabId = editorBlockPanel.id.replace('-', '-tab-');
+                        const targetTab = tabPanel.querySelector(`#${correspondingTabId}`);
+                        if (targetTab) {
+                            targetTab.click();
+                        }
+                    }
+                    // Bring the editor block into view with smooth scrolling
                     editorBlock.scrollIntoView({
                         behavior: 'smooth',
                         block: 'center',
