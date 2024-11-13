@@ -3,7 +3,7 @@
 Find live preview matrix blocks with ease.
 
 ## Requirements
-This plugin supports Craft CMS 5.0+
+This plugin supports Craft CMS 5.x
 
 ## Installation
 To install the plugin, follow these instructions.
