@@ -126,7 +126,7 @@
                     tab.click();
                 }
             } catch (error) {
-                console.error('Preview Mate: Error updating selected editor tab:', error);
+                console.warn('Preview Mate: Error updating selected editor tab:', error);
             }
         },
 
