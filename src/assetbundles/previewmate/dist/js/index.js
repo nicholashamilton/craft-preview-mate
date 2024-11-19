@@ -77,32 +77,28 @@
         handleDpcIframeOnLoadEvent(e) {
             Craft.PreviewMate.dpcIframeElement = e.currentTarget;
 
-            Craft.PreviewMate.attatchPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
+            Craft.PreviewMate.attachPreviewBlockEventListeners(Craft.PreviewMate.dpcIframeElement);
         },
 
-        attatchPreviewBlockEventListeners(iframe) {
+        attachPreviewBlockEventListeners(iframe) {
             const previewBlocks = iframe.contentWindow.document.body.querySelectorAll('[data-preview-block-id]');
-            const tabPanel = Craft.PreviewMate.lpEditorContainer.querySelector('.pane-tabs');
+
+            const editorTabsContainer = Craft.PreviewMate.lpEditorContainer.querySelector('.lp-toolbar .pane-tabs');
+            const hasEditorTabs = !!editorTabsContainer && editorTabsContainer.children.length > 0;
 
             previewBlocks.forEach(function (previewBlock) {
 
                 const editorBlock = Craft.PreviewMate.lpEditorContainer.querySelector(`[data-id="${previewBlock.dataset.previewBlockId}"]`);
-
                 if (!editorBlock) return;
+
                 previewBlock.addEventListener('click', function () {
-                    //Preview Tabs
-                    const editorBlockPanel = editorBlock.closest('.flex-fields[role="tabpanel"]');
-                    const hiddenBlockPanels = Craft.PreviewMate.lpEditorContainer.querySelectorAll('.flex-fields.hidden[role="tabpanel"]');
-                    // If the block is in a hidden tab panel, switch to that tab.
-                    // Otherwise scroll the block into view
-                    if (Array.from(hiddenBlockPanels).includes(editorBlockPanel)) {
-                        const correspondingTabId = editorBlockPanel.id.replace('-', '-tab-');
-                        const targetTab = tabPanel.querySelector(`#${correspondingTabId}`);
-                        if (targetTab) {
-                            targetTab.click();
-                        }
+
+                    if (hasEditorTabs) {
+                        // Select the editor tab corresponding to this editor block
+                        Craft.PreviewMate.selectEditorTab(editorBlock, editorTabsContainer);
                     }
-                    // Bring the editor block into view with smooth scrolling
+
+                    // Scroll editor block into view
                     editorBlock.scrollIntoView({
                         behavior: 'smooth',
                         block: 'center',
@@ -119,6 +115,19 @@
                     editorBlock.style.border = '1px dashed transparent';
                 });
             });
+        },
+
+        selectEditorTab(editorBlock, editorTabsContainer) {
+            try {
+                const tabPanel = editorBlock.closest('[role="tabpanel"]');
+                const tabId = tabPanel.getAttribute('aria-labelledby');
+                const tab = editorTabsContainer.querySelector(`#${tabId}`);
+                if (tab.getAttribute('aria-selected') !== 'true') {
+                    tab.click();
+                }
+            } catch (error) {
+                console.error('Preview Mate: Error updating selected editor tab:', error);
+            }
         },
 
         hasPreviewButton() {
