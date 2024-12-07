@@ -36,7 +36,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Removed `config/preview-mate.php`. No longer needed after adding `preview-block-id`.
 
 ## 2.0.0 - 2024-03-26
-- Added support for Craft CMS 5.0 or later.
+- Added support for Craft CMS 4.x
 
 ## 1.0.2 - 2024-02-07
 ### Fixed
