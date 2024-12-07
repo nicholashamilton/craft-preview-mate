@@ -5,6 +5,8 @@ Find live preview matrix blocks with ease.
 ## Requirements
 This plugin supports Craft CMS 5.x
 
+> **Note:** PreviewMate 1.x and 2.x are only compatible with Craft CMS 3.x and 4.x. PreviewMate 3.x and 4.x are only compatible with Craft CMS 5.x.
+
 ## Installation
 To install the plugin, follow these instructions.
 
