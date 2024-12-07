@@ -1,6 +1,8 @@
-# PreviewMate v1
+# PreviewMate v1/ v2
 
 > **Note:** You're viewing documentation for Craft CMS 4. [View most recent](https://github.com/nicholashamilton/craft-preview-mate) 
+
+> **Note:** PreviewMate 1.x and 2.x are only compatible with Craft CMS 4.x. PreviewMate 3.x and 4.x are only compatible with Craft CMS 5.x.
 
 ----
 
