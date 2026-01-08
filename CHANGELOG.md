@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.1.1 - 2026-01-06
+### Security
+- Updated dependencies to address security vulnerabilities
+
 ## 4.1.0 - 2024-11-19
 ### Added
 - Added automatic tab selection in live preview when clicking preview blocks that belong to different tabs.
